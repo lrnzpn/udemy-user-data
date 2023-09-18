@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Button from "../Button/Button";
-import Card from "../Card/Card";
-import ErrorModal from "../ErrorModal/ErrorModal";
+import Button from "../../UI/Button/Button";
+import Card from "../../UI/Card/Card";
+import ErrorModal from "../../UI/ErrorModal/ErrorModal";
 import styles from './AddUser.module.css'
 
 const AddUser = (props) => {
@@ -13,6 +13,14 @@ const AddUser = (props) => {
     isEmpty: false,
     ageInvalid: false
   });
+
+  /* instead of using boolean checks, the lecture uses it to set title and message state
+    const [error, setError] = useState({
+      title: ...,
+      message: ...
+    })
+    change the title and message depending on the error
+  */
 
   const inputChangeHandler = (input, value) => {
     setUser(prevState => {
@@ -31,7 +39,7 @@ const AddUser = (props) => {
         isEmpty: true
       });
       return;
-    } else if (user.age <= 0) {
+    } else if (+user.age <= 0) {
       setInvalid({
         isEmpty: false,
         ageInvalid: true
@@ -40,7 +48,7 @@ const AddUser = (props) => {
     }
     const userData = {
       name: user.name,
-      age: user.age
+      age: +user.age
     }
     props.onAddUser(userData);
     setUser({
@@ -63,6 +71,10 @@ const AddUser = (props) => {
   return <Card className={styles.input}>
     <form onSubmit={submitHandler}>
       <p>
+        {/* To add in next projects
+          label htmlFor=username
+          input id=username
+        */}
         <label>Username</label>
         <input type="text" 
           onChange={event => inputChangeHandler('name', event.target.value)}  
