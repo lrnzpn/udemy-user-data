@@ -2,9 +2,9 @@
 Section 9 - 2nd practice project: User Data
 
 ### Tasks
-- [ ] Build Core components
-- [ ] Manage State
-- [ ] Output Users conditionally & show error modal
+- [x] Build Core components
+- [x] Manage State
+- [x] Output Users conditionally & show error modal
 
 ### Hints
 - Analyze app and its behavior in previous lecture
